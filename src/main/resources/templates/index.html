@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Similarity Score</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+</head>
+<body>
+    <h1>Compute Similarity</h1>
+    <form class="form-container" action="#" th:action="@{/}" th:object="${query}" method="post">
+        <p>URL 1 <input class="url-container" type="text" th:field="*{url1}" /></p>
+        <p>URL 2 <input class="url-container" type="text" th:field="*{url2}" /></p>
+        <input type="submit" value="Compute" />
+        <p th:if="${result != null and result.nullableErrorMessage == null}" th:text="'Similarity Score: ' + ${result.score}" />
+        <p th:unless="${result == null or result.nullableErrorMessage == null}" th:text="'Error: ' + ${result.nullableErrorMessage}" />
+    </form>
+</body>
+</html>
